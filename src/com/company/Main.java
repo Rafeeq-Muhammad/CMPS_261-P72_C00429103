@@ -11,7 +11,6 @@
 package com.company;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.*;
 
@@ -25,7 +24,21 @@ public class Main {
         Map<String, Integer> girl_map_2001 = new HashMap<String, Integer>();
 
         List<HashMap<String, Integer>> list_of_boy_maps = new ArrayList<HashMap<String, Integer>>();
-        list_of_boy_maps.add(new HashMap<String,Integer>());
+        List<HashMap<String, Integer>> list_of_girl_maps = new ArrayList<HashMap<String, Integer>>();
+
+        /*
+        Each ArrayList has 10 elements each.
+        Each element's index corresponds to a HashMap of a certain year:
+        Index 0 - Year 2001
+        Index 1 - Year 2002
+        .
+        .
+        Index 9 - Year 2010
+         */
+        for (int i = 0; i < 10; i++) {
+            list_of_boy_maps.add(new HashMap<String, Integer>());
+            list_of_girl_maps.add(new HashMap<String, Integer>());
+        }
 
         String[] URLs = new String[]{
                 "http://liveexample.pearsoncmg.com/data/babynameranking2001.txt",
@@ -41,18 +54,17 @@ public class Main {
         };
 
 
+        for (int i = 0; i < 10; i++) {
+            try (java.util.Scanner input = new java.util.Scanner(new java.net.URL(
+                    URLs[i]
+            ).openStream())) {
 
-        try (java.util.Scanner input = new java.util.Scanner(new java.net.URL(
-//                "http://liveexample.pearsoncmg.com/data/babynameranking2001.txt"
-                URLs[0]
-        ).openStream())) {
-
-            String inputLine;
-            while ((inputLine = input.nextLine()) != null) {
+                String inputLine;
+                while ((inputLine = input.nextLine()) != null) {
 //                System.out.println(inputLine);
 
-                // Make an array that splits the input line by tokens
-                String[] inputLine_tokens = inputLine.split("\\s+");
+                    // Make an array that splits the input line by tokens
+                    String[] inputLine_tokens = inputLine.split("\\s+");
 
                 /*
                 inputLine_tokens:
@@ -60,9 +72,9 @@ public class Main {
                 [1] is the boy name
                 [3] is the girl name
                  */
-                int ranking = Integer.parseInt(inputLine_tokens[0]);
-                String boy_name = inputLine_tokens[1];
-                String girl_name = inputLine_tokens[3];
+                    int ranking = Integer.parseInt(inputLine_tokens[0]);
+                    String boy_name = inputLine_tokens[1];
+                    String girl_name = inputLine_tokens[3];
 
                 /*
                 For each iteration of the loop...
@@ -70,20 +82,30 @@ public class Main {
                  */
 //                boy_map_2001.put(boy_name, ranking);
 //                girl_map_2001.put(girl_name, ranking);
-                list_of_boy_maps.get(0).put(boy_name, ranking);
+                    list_of_boy_maps.get(i).put(boy_name, ranking);
+                    list_of_girl_maps.get(i).put(boy_name, ranking);
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NoSuchElementException e) {
 
             }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NoSuchElementException e) {
-
         }
-
         //After the try block, a populated hashmap should exist.
 
-        System.out.print(list_of_boy_maps.get(0).get("Roland"));
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(list_of_boy_maps.get(i).get("Joseph"));
+//        }
+
+        /*
+        Ask the user for input
+         */
+        int user_year;
+        String user_gender;
+        String user_name; // User must type in name case sensitive. Capital first letter.
     }
 }
