@@ -13,9 +13,7 @@ package com.company;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Main {
 
@@ -26,23 +24,27 @@ public class Main {
         Map<String, Integer> boy_map_2001 = new HashMap<String, Integer>();
         Map<String, Integer> girl_map_2001 = new HashMap<String, Integer>();
 
+        List<HashMap<String, Integer>> list_of_boy_maps = new ArrayList<HashMap<String, Integer>>();
+        list_of_boy_maps.add(new HashMap<String,Integer>());
 
-        /*
-        http://liveexample.pearsoncmg.com/data/babynameranking2001.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2002.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2003.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2004.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2005.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2006.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2007.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2008.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2009.txt
-        http://liveexample.pearsoncmg.com/data/babynamesranking2010.txt
-         */
+        String[] URLs = new String[]{
+                "http://liveexample.pearsoncmg.com/data/babynameranking2001.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2002.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2003.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2004.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2005.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2006.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2007.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2008.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2009.txt",
+                "http://liveexample.pearsoncmg.com/data/babynamesranking2010.txt"
+        };
+
 
 
         try (java.util.Scanner input = new java.util.Scanner(new java.net.URL(
-                "http://liveexample.pearsoncmg.com/data/babynameranking2001.txt"
+//                "http://liveexample.pearsoncmg.com/data/babynameranking2001.txt"
+                URLs[0]
         ).openStream())) {
 
             String inputLine;
@@ -66,8 +68,9 @@ public class Main {
                 For each iteration of the loop...
                 Store relevant information into relevant hashmaps
                  */
-                boy_map_2001.put(boy_name, ranking);
-                girl_map_2001.put(girl_name, ranking);
+//                boy_map_2001.put(boy_name, ranking);
+//                girl_map_2001.put(girl_name, ranking);
+                list_of_boy_maps.get(0).put(boy_name, ranking);
 
             }
 
@@ -81,6 +84,6 @@ public class Main {
 
         //After the try block, a populated hashmap should exist.
 
-//        System.out.print(boy_map_2001.get("Roland"));
+        System.out.print(list_of_boy_maps.get(0).get("Roland"));
     }
 }
