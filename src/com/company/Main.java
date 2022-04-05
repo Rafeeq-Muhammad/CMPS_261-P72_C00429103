@@ -80,10 +80,8 @@ public class Main {
                 For each iteration of the loop...
                 Store relevant information into relevant hashmaps
                  */
-//                boy_map_2001.put(boy_name, ranking);
-//                girl_map_2001.put(girl_name, ranking);
                     list_of_boy_maps.get(i).put(boy_name, ranking);
-                    list_of_girl_maps.get(i).put(boy_name, ranking);
+                    list_of_girl_maps.get(i).put(girl_name, ranking);
 
                 }
 
@@ -104,8 +102,40 @@ public class Main {
         /*
         Ask the user for input
          */
+
+        // Variables stored from user input
         int user_year;
         String user_gender;
         String user_name; // User must type in name case sensitive. Capital first letter.
+
+        // Create a Scanner object
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Please enter a year [2001 - 2010]: ");
+        user_year = in.nextInt();
+        in.nextLine();
+        System.out.print("\nPlease enter a gender [B/G]: ");
+        user_gender = in.nextLine();
+        System.out.print("\nPlease enter a name (case sensitive. Capitalize the first letter): ");
+        user_name = in.nextLine();
+
+        /*
+        Assuming correct input from the user, the index of the ArrayList that corresponds
+        to the year is:
+        user_year - 2001
+         */
+
+        if (user_gender.equalsIgnoreCase("B")) { // Boy
+            System.out.print("The ranking of the boy name for your chosen year is: ");
+            System.out.print(list_of_boy_maps.get(user_year - 2001).get(user_name));
+        } else {
+            System.out.print("The ranking of the girl name for your chosen year is: ");
+            System.out.print(list_of_girl_maps.get(user_year - 2001).get(user_name));
+        }
+
+
+
+
     }
 }
