@@ -2,7 +2,7 @@
 // C00429103
 // CMPS 261
 //
-// Program Description:
+// Program Description: This project allows the user to find the ranking of a name.
 //
 // Certificate of Authenticity:
 //I certify that the code in the method functions including method function main of this project are entirely my own work.
@@ -14,8 +14,21 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
 
+/**
+ * @author C00429103
+ * @version 1.0
+ * @since 4/6/2022
+ * <p>
+ *     This class allows the user to find the ranking of a name by year.
+ * </p>
+ */
 public class Main {
-
+    /**
+     * @param args the command line arguments
+     * <p>
+     *     This method contains all the driver code for the project.
+     * </p>
+     */
     public static void main(String[] args) {
         // write your code here
 
